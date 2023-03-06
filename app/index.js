@@ -13,7 +13,9 @@ const UserRoute = require("./user/user.router");
 
 app.use(bodyParser.json());
 
-app.use("/", UserRoute);
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.listen(port, () => {
   console.log(`Server Listening on port http://localhost:${port}`);
