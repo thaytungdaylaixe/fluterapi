@@ -4,7 +4,7 @@ exports.register = async (req, res, next) => {
   try {
     const { phone, password } = req.body;
 
-    console.log(req.body);
+    // console.log(req.body);
 
     const successRes = await UserService.registerUser(phone, password);
 

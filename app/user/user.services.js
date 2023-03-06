@@ -33,7 +33,7 @@ class UserService {
     const secreKey = "@Mydung123456789";
     const jwt_expire = "7d";
 
-    console.log(tokenData);
+    // console.log(tokenData);
     return await jwt.sign(tokenData, secreKey, { expiresIn: jwt_expire });
   }
 }
