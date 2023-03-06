@@ -1,11 +1,19 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+const connectDB = require("./config/db");
+connectDB();
+
+const UserRoute = require("./user/user.router");
+
+app.use(bodyParser.json());
+
+app.use("/", UserRoute);
 
 app.listen(port, () => {
   console.log(`Server Listening on port http://localhost:${port}`);
