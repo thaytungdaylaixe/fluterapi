@@ -6,8 +6,17 @@ class UserService {
   static async registerUser(phone, password) {
     try {
       const createUser = new UserModel({ phone, password });
-      //   console.log(createUser);
-      return await createUser.save();
+
+      await createUser.save();
+
+      let tokenData = {
+        _id: createUser._id,
+        phone: createUser.phone,
+        roles: createUser.roles,
+        active: createUser.active,
+      };
+
+      return tokenData;
     } catch (err) {
       throw err;
     }

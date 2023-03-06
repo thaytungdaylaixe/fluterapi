@@ -4,11 +4,17 @@ exports.register = async (req, res, next) => {
   try {
     const { phone, password } = req.body;
 
-    // console.log(req.body);
+    const user = await UserService.checkUser(phone);
 
-    const successRes = await UserService.registerUser(phone, password);
+    if (!user) {
+      const tokenData = await UserService.registerUser(phone, password);
 
-    res.json({ status: true, success: " User dang ky thanh cong" });
+      const token = await UserService.generateToken(tokenData);
+
+      res.status(200).json({ status: true, token });
+    }
+
+    res.json({ status: false, success: "So dien thoai da ton tai" });
   } catch (err) {
     throw err;
   }
