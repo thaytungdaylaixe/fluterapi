@@ -13,6 +13,8 @@ const UserRoute = require("./user/user.router");
 
 app.use(bodyParser.json());
 
+app.use("/users", UserRoute);
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
