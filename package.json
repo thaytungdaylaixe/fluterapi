@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "git": "git add . && git commit -m \"Commit changes\" && git push -u origin main",
-    "dev": "nodemon app/index.js"
+    "dev": "nodemon app/index.js",
+    "start": "app/index.js"
   },
   "author": "",
   "license": "ISC",
